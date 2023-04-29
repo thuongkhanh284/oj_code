@@ -1,0 +1,44 @@
+from sys import stdin
+
+def solution(a, n):
+
+    left = 0
+    right = n-1
+    count = 0
+    curr = 0
+    maxi = 0
+    while (left <= right):
+
+        if (a[left] < a[right]):
+            curr = a[left]
+            left = left + 1
+            
+        else:
+            if (a[left] > a[right]):
+                curr = a[right]
+                right = right - 1
+            else: 
+                curr = a[left]
+                left = left +1
+                     
+        if (curr >= maxi):
+            count = count + 1
+        if (curr >= maxi):
+            maxi = curr
+        else:
+            curr = maxi
+            
+        
+        
+    return count
+    
+
+def solution_wrapper():
+    T = stdin.readline()
+    for i in range(int(T)):
+        n = int(stdin.readline())
+        A = [int(x) for x in stdin.readline().split()]
+        res = solution(A,n)
+        print("Case #%d: %s" % (i + 1, res))           
+if __name__ == "__main__":
+    solution_wrapper()
